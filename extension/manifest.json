@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Recon (MCP bridge)",
+  "version": "0.2.0",
+  "description": "Bridges Claude (via a local MCP server) to the Chrome DevTools Protocol, with identity-redacting filter.",
+  "permissions": ["debugger", "tabs", "storage", "alarms", "sidePanel"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "side_panel": { "default_path": "side_panel.html" },
+  "action": { "default_title": "Browser Recon — open sidebar" }
+}

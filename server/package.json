@@ -1,0 +1,26 @@
+{
+  "name": "browser-recon-server",
+  "version": "0.2.0",
+  "description": "MCP server bridging Claude to a Chrome tab over the DevTools Protocol, with optional identity redaction.",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "browser-recon": "index.js"
+  },
+  "scripts": {
+    "test": "node smoke.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "chrome-devtools-protocol",
+    "cdp"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "acorn": "^8.16.0",
+    "js-beautify": "^1.15.4",
+    "ws": "^8.21.0",
+    "zod": "^4.4.3"
+  }
+}

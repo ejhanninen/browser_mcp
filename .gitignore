@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Local tooling / editor state
+.claude/settings.local.json
+.vscode/
+.idea/
+
+# Scratch files from local test runs
+_*.tmp.mjs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini

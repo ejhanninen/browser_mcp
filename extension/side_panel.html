@@ -1,0 +1,44 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>Browser Recon</title>
+<style>
+  body { font: 13px system-ui, sans-serif; margin: 0; padding: 12px; color: #222; }
+  h1 { font-size: 13px; margin: 0 0 8px; }
+  .status { padding: 6px 8px; border-radius: 6px; background: #eee; font-size: 12px; }
+  .status.on { background: #d6f5d6; }
+  .status.off { background: #f5d6d6; }
+  .status.warn { background: #f5ecd6; }
+  label { display: block; margin: 12px 0 4px; font-weight: 600; font-size: 12px; }
+  textarea { width: 100%; box-sizing: border-box; height: 70px; font: 12px ui-monospace, monospace; padding: 6px; border-radius: 4px; border: 1px solid #ccc; resize: vertical; }
+  .hint { color: #666; font-size: 11px; margin: 4px 0 0; line-height: 1.4; }
+  #tabs { margin-top: 4px; max-height: calc(100vh - 280px); overflow-y: auto; }
+  .tab { display: flex; align-items: center; padding: 6px 4px; gap: 8px; border-bottom: 1px solid #eee; }
+  .tab img { width: 16px; height: 16px; flex: 0 0 16px; }
+  .tab .title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+  .tab button { font-size: 11px; padding: 3px 8px; border-radius: 4px; border: 1px solid #ccc; background: #fafafa; cursor: pointer; }
+  .tab button:hover { background: #eee; }
+  .tab.attached { background: #eef9ee; }
+  .tab.attached button { background: #d6f5d6; border-color: #6bbf6b; }
+  .toggle { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 12px; cursor: pointer; }
+  .toggle input { width: 15px; height: 15px; margin: 0; cursor: pointer; }
+  #keywords:disabled { opacity: 0.45; cursor: not-allowed; }
+  body:not(.redacting) .needs-redact { opacity: 0.45; }
+</style>
+<h1>Browser Recon — sidebar</h1>
+<div id="status" class="status off">checking…</div>
+
+<label class="toggle" for="redact">
+  <input type="checkbox" id="redact" />
+  <span>Redact identity</span>
+</label>
+<p class="hint">Off: the AI sees real URLs, titles, sources and headers. On: origins
+and the keywords below become opaque <code>tok_*</code> tokens.</p>
+
+<label class="needs-redact" for="keywords">Redact keywords</label>
+<textarea id="keywords" placeholder="acme, AcmeCo, secret-product"></textarea>
+<p class="hint needs-redact">Comma-separated. Case-insensitive matching; each observed casing gets its own token. Set <i>before</i> attaching.</p>
+
+<label>Tabs</label>
+<div id="tabs"></div>
+
+<script type="module" src="side_panel.js"></script>
